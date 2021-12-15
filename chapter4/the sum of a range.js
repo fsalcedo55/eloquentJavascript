@@ -7,4 +7,13 @@ function range(numStart, numEnd) {
   return numArr;
 }
 
-range(1, 20);
+function sum(arr) {
+  let counter = 0;
+  arr.forEach(function (num) {
+    counter += num;
+    return counter;
+  });
+  console.log({ counter });
+}
+
+sum(range(1, 10));
