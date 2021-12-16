@@ -1,19 +1,21 @@
-function range(numStart, numEnd) {
+function range(numStart, numEnd, numStep = numStart < numEnd ? 1 : -1) {
   let numArr = [];
-  let counter;
-  for (counter = numStart; counter <= numEnd; counter++) {
-    numArr.push(counter);
+
+  if (numStep > 0) {
+    for (let i = numStart; i <= numEnd; i += numStep) numArr.push(i);
+  } else {
+    for (let i = numStart; i >= numEnd; i += numStep) numArr.push(i);
   }
   return numArr;
+  console.log({ numArr });
 }
 
 function sum(arr) {
   let counter = 0;
   arr.forEach(function (num) {
     counter += num;
-    return counter;
   });
-  console.log({ counter });
+  return counter;
 }
 
-sum(range(1, 10));
+sum(range(5, 2, -1));
