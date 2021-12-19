@@ -18,4 +18,15 @@ function arrayToList(array) {
   return list;
 }
 
+function listToArray(list) {
+  let array = [];
+  for (let node = list; node; node = node.rest) {
+    array.push(node.value);
+  }
+  return array;
+}
+
 arrayToList([10, 20]);
+// → {value: 10, rest: {value: 20, rest: null}}
+listToArray(arrayToList([10, 20, 30]));
+// → [10, 20, 30]
