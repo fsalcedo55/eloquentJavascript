@@ -33,6 +33,12 @@ function prepend(element, list) {
   return arrayToList(array);
 }
 
+function nth(list, n) {
+  if (!list) return undefined;
+  else if (n == 0) return list.value;
+  else return nth(list.rest, n - 1);
+}
+
 arrayToList([10, 20]);
 // → {value: 10, rest: {value: 20, rest: null}}
 listToArray(arrayToList([10, 20, 30]));
