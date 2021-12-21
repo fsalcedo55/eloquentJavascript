@@ -1,20 +1,23 @@
 function deepEqual(firstValue, secondValue) {
+  let firstKeys = Object.keys(firstValue);
+  let secondKeys = Object.keys(secondValue);
+
   if (
     typeof firstValue == "object" &&
     typeof secondValue == "object" &&
     typeof firstValue != null &&
     typeof secondValue != null
   ) {
-    if (Object.keys(firstValue).length != Object.keys(secondValue).length) {
-      return firstValue === secondValue;
-    } else {
-      for (let property in firstValue) {
-        if (!property in secondValue) {
-          return false;
-        } else if (firstValue.property != Object.keys(secondValue)) return true;
-      }
+    if (firstKeys.length != secondKeys.length) return false;
+
+    for (let key in firstKeys) {
+      if (
+        !secondKeys.includes(key) ||
+        !deepEqual(firstValue[key], secondValue[key])
+      )
+        return true;
     }
-  } else return firstValue === secondValue;
+  } else return false;
 }
 
 let obj = { here: { is: "an" }, object: 2 };
