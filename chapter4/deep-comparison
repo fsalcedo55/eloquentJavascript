@@ -1,5 +1,3 @@
-// Your code here.
-
 function deepEqual(firstValue, secondValue) {
   if (
     typeof firstValue == "object" &&
@@ -7,15 +5,20 @@ function deepEqual(firstValue, secondValue) {
     typeof firstValue != null &&
     typeof secondValue != null
   ) {
-    if (Object.keys(firstValue).length != Object.keys(secondValue).length)
-      return false;
-    else {
+    if (Object.keys(firstValue).length != Object.keys(secondValue).length) {
+      return firstValue === secondValue;
+    } else {
+      for (let property in firstValue) {
+        if (!property in secondValue) {
+          return false;
+        } else if (firstValue.property != Object.keys(secondValue)) return true;
+      }
     }
-  } else return false;
+  } else return firstValue === secondValue;
 }
 
 let obj = { here: { is: "an" }, object: 2 };
-deepEqual(obj, obj);
+// deepEqual(obj, obj)
 // → true
 deepEqual(obj, { here: 1, object: 2 });
 // → false
